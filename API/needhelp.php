@@ -23,8 +23,8 @@
 		$resp = $T->request("Accounts/${AccountSid}/SMS/Messages", "POST", $vars);
 
 		$SID = $resp->ResponseXml->SMSMessage->Sid;
-		$fp = fopen("sid_log.txt", "w");
-		fwrite($fp, "${SID},$recipient,$recip_phone\n");
+		$fp = fopen("sid_log.txt", "a");
+		fwrite($fp, "${the_helper},$recipient,$recip_phone\n");
 		fclose($fp);
 
 	}
