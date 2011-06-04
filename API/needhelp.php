@@ -7,27 +7,41 @@
 
 	$message = $_POST['message'];
 	$helpers = $_POST['helpers'];
-	//printf("%s Needs help %s\n", $recipient, $recip_phone);
 
+	$i_sql = "
+INSERT INTO help_requests (requestor, requestor_phone, problem ) 
+VALUES ('%s', '%s', '%s')";
+
+	$i_sql = sprintf($i_sql, $recipient, $recip_phone, $message);
+	mysql_query($i_sql);
+
+	$request_id = mysql_insert_id();
+
+	/*
 	$self_url = sprintf('http://%s/%s/contact_help.php', 
 						$_SERVER['HTTP_HOST'], 'RHOK-GS/API');
 
+	*/
+
 	$T = new TwilioRestClient($AccountSid, $AuthToken);
 
-	$vars = array('From'=> '(408) 645-7465', 
-		'Body' => "$recipient needs help with ${message} reply 'yes ${recipient}' to offer assistance");
+	$vars = array('From'=> $FromNumber, 
+		'Body' => "$recipient needs help with ${message} reply 'help ${request_id}' to offer assistance");
 
 
 	foreach ($helpers as $the_helper) {
 		$vars['To'] = $the_helper;
 
-		echo "Contacting ${the_helper}\n";
 		$resp = $T->request("Accounts/${AccountSid}/SMS/Messages", "POST", $vars);
 
 		$SID = $resp->ResponseXml->SMSMessage->Sid;
-		$fp = fopen("sid_log.txt", "a");
-		fwrite($fp, "${the_helper},$recipient,$recip_phone\n");
-		fclose($fp);
+
+		$i_sql = "
+INSERT INTO helper_responses (request_id, helper_phone ) 
+VALUES (%d, '%s')";
+
+		$i_sql = sprintf($i_sql, $request_id, $the_helper);
+		mysql_query($i_sql);
 
 	}
 ?>
