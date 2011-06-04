@@ -34,16 +34,6 @@ CREATE TABLE `help_requests` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `help_requests`
---
-
-LOCK TABLES `help_requests` WRITE;
-/*!40000 ALTER TABLE `help_requests` DISABLE KEYS */;
-INSERT INTO `help_requests` VALUES (1,'bob','(404) 555 1212',0,0,'flat tirez'),(2,'bob','(404) 555 1212',0,0,'flat tirez'),(3,'bob','(404) 555 1212',0,0,'flat tirez'),(4,'bob','(404) 555 1212',0,0,'flat tirez'),(5,'bob',' 16783894374',0,0,'flat tirez'),(6,'bob',' 16783894374',0,0,'flat tirez');
-/*!40000 ALTER TABLE `help_requests` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `helper_responses`
 --
 
@@ -63,12 +53,6 @@ CREATE TABLE `helper_responses` (
 -- Dumping data for table `helper_responses`
 --
 
-LOCK TABLES `helper_responses` WRITE;
-/*!40000 ALTER TABLE `helper_responses` DISABLE KEYS */;
-INSERT INTO `helper_responses` VALUES (1,2,'+14045146464',''),(2,3,'+14045146464',''),(3,4,'+14045146464',''),(4,5,'+14045146464',''),(5,6,'+14045146464','');
-/*!40000 ALTER TABLE `helper_responses` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
