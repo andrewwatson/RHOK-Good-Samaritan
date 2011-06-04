@@ -1,2 +1,21 @@
 This is the PHP code that will drive the RHOK Good Samaritan App
 
+A Post to the API/needhelp.php starts the whole process.  
+
+That POST should include the following fields:
+
+curl 'http://hacks.apidoctor.com/RHOK-GS/API/needhelp.php' -d 'recipient=fred+smith' -d 'recip_phone=%2B16783894374' -d 'helpers[]=%2B14045146464' -d 'message=i+has+flat+tire'
+
+message: The person who needs help should be able to supply a short message like "flat tire"
+recipient: A short name/description of the person who needs help
+recip_phone: the phone number to call in order to reach the person in need of help
+
+helpers[] : specify this once for each samaritan in the proximity of the victim
+
+
+Once you this this API method, each of the helpers you specified will get an SMS that says
+
+"fred smith needs help with 'i has flat tire' respond with 'help 8' to offer assistance"
+
+If the helper responds then they'll be connected to the victim with a phone call from 
+(408) 645 - RHOK so they can discuss the situation further.
