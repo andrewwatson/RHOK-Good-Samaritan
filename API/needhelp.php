@@ -14,7 +14,9 @@
 
 	$T = new TwilioRestClient($AccountSid, $AuthToken);
 
-	$vars = array('From'=> '(408) 645-7465', 'Body' => "$recipient needs help with ${message} reply 'yes' to assist");
+	$vars = array('From'=> '(408) 645-7465', 
+		'Body' => "$recipient needs help with ${message} reply 'yes ${recipient}' to offer assistance");
+
 
 	foreach ($helpers as $the_helper) {
 		$vars['To'] = $the_helper;
