@@ -34,13 +34,6 @@
 		$response = "";
 	}
 
-	$cont = ob_get_contents();
-	mail("andrewmoorewatson@gmail.com","RHOK", $cont);
-	ob_end_clean();
-	
 	header("Content-type: text/xml");
-
 ?>
-<Response>
-	<Sms><?php echo $response; ?></Sms>
-</Response>
+<Response></Response>
